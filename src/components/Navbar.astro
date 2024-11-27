@@ -2,65 +2,39 @@
 
 ---
 
-<nav class="navbar">
-  <div class="navbar-content">
-    <a href="/" class="navbar-brand">
-      <span class="navbar-title">Anime Heaven</span>
+<nav class="fixed top-0 left-0 w-full z-50 bg-black md:px-4 md:py-4">
+  <div
+    class="flex items-center justify-between h-16 px-4 mx-auto max-w-screen-xl sm:px-6 md:justify-between lg:px-8"
+  >
+    <a href="/" class="mr-10 text-3xl font-extrabold text-white tracking-tight">
+      <span class="navbar-title">
+        <span class="text-violet-800">A</span>NIME HEAVEN
+      </span>
     </a>
-    <ul class="navbar-nav">
+    <ul
+      class="flex items-center space-x-4 text-sm font-medium text-white md:space-x-6"
+    >
       <li class="navbar-item">
         <a href="/AstroApp">Home</a>
       </li>
       <li class="navbar-item">
-        <a href="/blog">Blog</a>
+        <a href="/Genre">Genre</a>
       </li>
       <li class="navbar-item">
-        <a href="/docs">Docs</a>
+        <a href="/Animes">Animes</a>
       </li>
       <li class="navbar-item">
-        <a href="https://astro.build/integrations">Integrations</a>
+        <a href="/Features">Features</a>
+      </li>
+      <li class="navbar-item">
+        <a href="/News">News</a>
+      </li>
+      <li class="navbar-item">
+        <a href="/Contact">Contact</a>
+      </li>
+      <li class="navbar-item bg-violet-800 py-3 px-6 rounded text-nowrap">
+        <button class="login-btn">Sign Up</button>
       </li>
     </ul>
   </div>
 </nav>
-
-<style>
-  .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.75rem 1rem;
-  }
-  .navbar-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .navbar-brand {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .navbar-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: white;
-    margin-right: 10px;
-  }
-  .navbar-nav {
-    display: flex;
-    gap: 1rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .navbar-item {
-    font-size: 1rem;
-    font-weight: 500;
-    color: white;
-  }
-  .navbar-item a {
-    text-decoration: none;
-    color: white;
-  }
-</style>
