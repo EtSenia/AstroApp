@@ -8,19 +8,20 @@ let images = [
 ];
 
 let currentIndex = 0;
-
-function changeImage() {
-  currentIndex = (currentIndex + 1) % images.length;
-}
-
-setInterval(changeImage, 3000);
+let nextIndex = (currentIndex + 1) % images.length;
 ---
 
 <div id="carousel" class="carousel">
   <img
-    id="carousel-img"
+    id="next-img"
+    src={images[nextIndex]}
+    alt="next background"
+    class="carousel-image"
+  />
+  <img
+    id="current-img"
     src={images[currentIndex]}
-    alt="background"
+    alt="current background"
     class="carousel-image"
   />
 </div>
@@ -35,16 +36,55 @@ setInterval(changeImage, 3000);
   ];
 
   let currentIndex = 0;
+  let nextIndex = (currentIndex + 1) % images.length;
 
   function changeImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    const carouselImg = document.getElementById("carousel-img");
+    const currentImg = document.getElementById("current-img");
+    const nextImg = document.getElementById("next-img");
 
-    // Comprobar si el elemento existe antes de modificar su src
-    if (carouselImg instanceof HTMLImageElement) {
-      carouselImg.src = images[currentIndex];
+    if (
+      currentImg instanceof HTMLImageElement &&
+      nextImg instanceof HTMLImageElement
+    ) {
+      currentImg.classList.add("fade-out");
+
+      setTimeout(() => {
+        currentImg.classList.remove("fade-out");
+        currentImg.src = images[currentIndex];
+        nextImg.src = images[nextIndex];
+      }, 500); // Tiempo de transición
     }
+
+    currentIndex = nextIndex;
+    nextIndex = (currentIndex + 1) % images.length;
   }
 
   setInterval(changeImage, 3000);
 </script>
+
+<style>
+  .carousel {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Ajusta el tamaño según tus necesidades */
+    overflow: hidden;
+  }
+
+  .carousel-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Transición suave de opacidad */
+    opacity: 1; /* Aseguramos que la imagen esté visible inicialmente */
+  }
+
+  .fade-out {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0; /* Desvanece la imagen actual */
+  }
+
+  .fade-in {
+    opacity: 1; /* Hace visible la imagen siguiente */
+    transition: opacity 0.5s ease-in-out;
+  }
+</style>
