@@ -20,7 +20,9 @@ const { title } = Astro.props;
   </head>
   <body>
     <Navbar />
-    <slot />
+    <main class="mt-24">
+      <slot />
+    </main>
   </body>
 </html>
 <style is:global>

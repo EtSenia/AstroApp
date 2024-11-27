@@ -1,0 +1,50 @@
+---
+let images = [
+  "/AstroApp/bg1.jpg",
+  "/AstroApp/bg2.jpg",
+  "/AstroApp/bg3.jpg",
+  "/AstroApp/bg4.jpg",
+  "/AstroApp/bg5.jpg",
+];
+
+let currentIndex = 0;
+
+function changeImage() {
+  currentIndex = (currentIndex + 1) % images.length;
+}
+
+setInterval(changeImage, 3000);
+---
+
+<div id="carousel" class="carousel">
+  <img
+    id="carousel-img"
+    src={images[currentIndex]}
+    alt="background"
+    class="carousel-image"
+  />
+</div>
+
+<script>
+  let images = [
+    "/AstroApp/bg1.jpg",
+    "/AstroApp/bg2.jpg",
+    "/AstroApp/bg3.jpg",
+    "/AstroApp/bg4.jpg",
+    "/AstroApp/bg5.jpg",
+  ];
+
+  let currentIndex = 0;
+
+  function changeImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    const carouselImg = document.getElementById("carousel-img");
+
+    // Comprobar si el elemento existe antes de modificar su src
+    if (carouselImg instanceof HTMLImageElement) {
+      carouselImg.src = images[currentIndex];
+    }
+  }
+
+  setInterval(changeImage, 3000);
+</script>
