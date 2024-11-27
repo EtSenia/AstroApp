@@ -6,85 +6,70 @@ let images = [
   "/AstroApp/bg4.jpg",
   "/AstroApp/bg5.jpg",
 ];
-
-let currentIndex = 0;
-let nextIndex = (currentIndex + 1) % images.length;
 ---
 
 <div id="carousel" class="carousel">
-  <img
-    id="next-img"
-    src={images[nextIndex]}
-    alt="next background"
-    class="carousel-image"
-  />
-  <img
-    id="current-img"
-    src={images[currentIndex]}
-    alt="current background"
-    class="carousel-image"
-  />
+  {
+    images.map((url, index) => (
+      <img
+        id={`next-img-${index}`}
+        src={url}
+        alt="next background"
+        class="carousel-image"
+      />
+    ))
+  }
 </div>
 
 <script>
-  let images = [
-    "/AstroApp/bg1.jpg",
-    "/AstroApp/bg2.jpg",
-    "/AstroApp/bg3.jpg",
-    "/AstroApp/bg4.jpg",
-    "/AstroApp/bg5.jpg",
-  ];
+  let currentIndex = 0; // Índice de la imagen actual
+  const images = document.querySelectorAll(".carousel-image");
 
-  let currentIndex = 0;
-  let nextIndex = (currentIndex + 1) % images.length;
+  function showImage(index: number) {
+    const previousIndex = currentIndex;
+    currentIndex = index;
 
-  function changeImage() {
-    const currentImg = document.getElementById("current-img");
-    const nextImg = document.getElementById("next-img");
+    // Quitar las clases anteriores
+    images.forEach((img) => img.classList.remove("active"));
 
-    if (
-      currentImg instanceof HTMLImageElement &&
-      nextImg instanceof HTMLImageElement
-    ) {
-      currentImg.classList.add("fade-out");
-
-      setTimeout(() => {
-        currentImg.classList.remove("fade-out");
-        currentImg.src = images[currentIndex];
-        nextImg.src = images[nextIndex];
-      }, 500); // Tiempo de transición
-    }
-
-    currentIndex = nextIndex;
-    nextIndex = (currentIndex + 1) % images.length;
+    // Marcar la imagen actual como "active"
+    images[currentIndex].classList.add("active");
   }
 
-  setInterval(changeImage, 3000);
+  // Función para avanzar
+  function nextImage() {
+    const nextIndex = (currentIndex + 1) % images.length;
+    showImage(nextIndex);
+  }
+
+  // Inicializa el carrusel
+  showImage(currentIndex);
+
+  // Avance automático
+  setInterval(nextImage, 5000);
 </script>
 
 <style>
   .carousel {
     position: relative;
     width: 100%;
-    height: 400px; /* Ajusta el tamaño según tus necesidades */
-    overflow: hidden;
+    height: 55vh;
   }
 
   .carousel-image {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Transición suave de opacidad */
-    opacity: 1; /* Aseguramos que la imagen esté visible inicialmente */
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out; /* Transición suave */
+    z-index: 0;
+    opacity: 0;
   }
 
-  .fade-out {
-    transition: opacity 0.5s ease-in-out;
-    opacity: 0; /* Desvanece la imagen actual */
-  }
-
-  .fade-in {
-    opacity: 1; /* Hace visible la imagen siguiente */
-    transition: opacity 0.5s ease-in-out;
+  .carousel-image.active {
+    z-index: 1; /* Imagen activa al frente */
+    opacity: 1; /* Completamente visible */
   }
 </style>
