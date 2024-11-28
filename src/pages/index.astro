@@ -1,10 +1,11 @@
 ---
+import { Carousel } from "../components/Carousel";
 import Carrousel from "../components/Carrousel.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <Carrousel />
+  <Carousel client:load />
 </Layout>
 
 <style>
