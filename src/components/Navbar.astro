@@ -1,18 +1,21 @@
 ---
-
+import NavbarToggle from "./NavbarToggle.jsx";
 ---
 
-<nav class="fixed top-0 left-0 w-full z-50 bg-black md:px-4 md:py-4">
+<nav class="fixed top-0 left-0 w-full z-50 bg-black px-4 py-4">
   <div
-    class="flex items-center justify-between h-16 px-4 mx-auto max-w-screen-xl sm:px-6 md:justify-between lg:px-8"
+    class="flex items-center justify-between h-16 px-4 mx-auto max-w-screen-xl lg:px-8"
   >
-    <a href="/" class="mr-10 text-3xl font-extrabold text-white tracking-tight">
+    <a
+      href="/"
+      class="text-3xl font-extrabold text-white tracking-tight text-nowrap"
+    >
       <span class="navbar-title">
         <span class="text-violet-800">A</span>NIME HEAVEN
       </span>
     </a>
     <ul
-      class="flex items-center space-x-4 text-sm font-medium text-white md:space-x-6"
+      class="items-center space-x-3 text-sm font-medium text-white lg:space-x-6 hidden md:flex"
     >
       <li class="navbar-item">
         <a href="/AstroApp">Home</a>
@@ -37,4 +40,43 @@
       </li>
     </ul>
   </div>
+  <NavbarToggle client:media="(max-width: 768px)" />
+  <div
+    class="flex items-center md:hidden absolute right-0 top-0 mr-6 py-4 h-24"
+  >
+    <button id="menu-toggle" class="text-white">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+  <div
+    id="mobile-menu"
+    class="hidden bg-black text-white absolute left-0 w-full h-auto flex-col items-center space-y-6 py-4"
+  >
+    <ul class="space-y-4 text-center">
+      <li><a href="/AstroApp">Home</a></li>
+      <li><a href="/Genre">Genre</a></li>
+      <li><a href="/Animes">Animes</a></li>
+      <li><a href="/Features">Features</a></li>
+      <li><a href="/News">News</a></li>
+      <li><a href="/Contact">Contact</a></li>
+      <li>
+        <button class="bg-violet-800 py-3 px-6 rounded text-white"
+          >Sign Up</button
+        >
+      </li>
+    </ul>
+  </div>
+  -->
 </nav>
