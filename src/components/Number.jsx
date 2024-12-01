@@ -1,5 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
-import { state } from "../services/prueba";
+import { state } from "../core/services/prueba";
 
 export default function Number() {
     const [number, setNumber] = useState(state.getState());
