@@ -1,0 +1,17 @@
+---
+import Sidebar from "../components/Sidebar.astro";
+import Layout from "../layouts/Layout.astro";
+import Number from "../components/Number.jsx";
+---
+
+<Layout title="Genres">
+  <Sidebar />
+  <Number client:visible />
+</Layout>
+
+<script>
+  import { state } from "../services/prueba";
+  state.subscribe((state) => {
+    console.log(state);
+  });
+</script>

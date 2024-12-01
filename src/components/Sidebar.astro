@@ -1,0 +1,45 @@
+---
+import SidebarItem from "./SidebarItem.astro";
+---
+
+<div class="flex">
+  <div
+    class="fixed left-0 h-screen w-16 m-0 flex flex-col bg-gray-900 text-white shadow-lg"
+  >
+    <SidebarItem icon="fa-solid fa-home" text="Home" />
+    <SidebarItem icon="fa-solid fa-chart-line" text="Chart" />
+    <SidebarItem icon="fa-solid fa-user" text="User" />
+    <SidebarItem icon="fa-solid fa-users" text="Comunity" />
+    <SidebarItem icon="fa-solid fa-star" text="Star" />
+    <SidebarItem icon="fa-solid fa-bell" text="Bell" />
+    <SidebarItem icon="fa-solid fa-cog" text="Cog" />
+    <button
+      id="led-button"
+      class="relative w-full h-10 rounded-xl flex items-center justify-center uppercase font-bold text-white rainbow-button bg-gray-800 overflow-hidden group"
+    >
+      LED
+      <div
+        class="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-rainbow bg-[length:200%_100%] animate-gradient"
+      >
+      </div>
+    </button>
+    <div
+      class="relative h-4 w-full mx-auto top-[-10px] overflow-hidden rounded-xl opacity-10"
+    >
+      <div
+        class="relative h-6 blur-[0.8rem] w-full bg-gradient-rainbow bg-[length:200%_100%] animate-gradient"
+      >
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { assignEvents } from "../services/prueba";
+
+  assignEvents();
+
+  document.addEventListener("astro:after-swap", () => {
+    assignEvents();
+  });
+</script>
