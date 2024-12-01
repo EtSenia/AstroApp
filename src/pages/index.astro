@@ -1,10 +1,18 @@
 ---
 import { Carousel } from "../components/Carousel";
 import Layout from "../layouts/Layout.astro";
+
+const imagePaths = [
+  "/AstroApp/bg1.jpg",
+  "/AstroApp/bg2.jpg",
+  "/AstroApp/bg3.jpg",
+  "/AstroApp/bg4.jpg",
+  "/AstroApp/bg5.jpg",
+];
 ---
 
 <Layout title="Anime Heaven.">
-  <Carousel client:visible />
+  <Carousel client:visible images={imagePaths} />
 </Layout>
 
 <style>

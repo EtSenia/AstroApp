@@ -1,15 +1,8 @@
 import { useState, useEffect } from "preact/hooks";
 
-export function Carousel() {
+export function Carousel({images}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false); // Para controlar si está pausado
-  const images = [
-    "/AstroApp/bg1.jpg",
-    "/AstroApp/bg2.jpg",
-    "/AstroApp/bg3.jpg",
-    "/AstroApp/bg4.jpg",
-    "/AstroApp/bg5.jpg",
-  ];
 
   function nextImage() {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -27,6 +20,7 @@ export function Carousel() {
   }, [isPaused, currentIndex]); // El intervalo depende de si está pausado o no
 
   return (
+    <>
     <div
       id="carousel"
       class="carousel relative w-full"
@@ -50,11 +44,12 @@ export function Carousel() {
         &gt;
       </button>
 
-      {images.map((url, index) => (
+      {images.map((src, index) => (
         <img
+          loading={"lazy"}
           key={index}
           draggable="false"
-          src={url}
+          src={src}
           alt={`background ${index}`}
           style={{
             clipPath:
@@ -66,5 +61,6 @@ export function Carousel() {
         />
       ))}
     </div>
+    </>
   );
 }

@@ -2,6 +2,7 @@ import { useState } from "preact/hooks";
 
   export default function MenuToggle() {
     const [isOpen, setIsOpen] = useState(false);
+    
 
     const toggleMenu = () => {
       setIsOpen(!isOpen);
